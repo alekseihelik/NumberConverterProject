@@ -27,7 +27,14 @@ public class NumberConverter {
     }
 
     public int[] convertToDecimal() {
-        return null;
+        int[] decimal = new int[digits.length];
+        for(int i=0; i<digits.length;i++){
+            decimal[i] = (int) (Math.pow(base, i) * digits[digits.length-i]);
+            if(i>=1){
+                decimal[0] += decimal[i];
+            }
+        }
+        return decimal;
     }
 
     public int[] convertToBinary() {
