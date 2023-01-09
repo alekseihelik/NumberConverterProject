@@ -26,15 +26,15 @@ public class NumberConverter {
         return digits;
     }
 
-    public int[] convertToDecimal() {
+    public int convertToDecimal() {
         int[] decimal = new int[digits.length];
         for(int i=0; i<digits.length;i++){
-            decimal[i] = (int) (Math.pow(base, i) * digits[digits.length-i]);
+            decimal[i] = (int) (Math.pow(base, i) * digits[digits.length-(1+i)]);
             if(i>=1){
                 decimal[0] += decimal[i];
             }
         }
-        return decimal;
+        return decimal[0];
     }
 
     public int[] convertToBinary() {
