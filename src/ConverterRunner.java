@@ -21,7 +21,11 @@ class ConverterRunner {
         int[] digits = nc.getDigits();
         System.out.println("\n\nDigit array: " + Arrays.toString(digits));
         System.out.println("Number: " + nc.displayOriginalNumber());
+        System.out.println(nc.convertToBinary());
         System.out.println(nc.convertToDecimal());
+        System.out.println(nc.convertToOctal());
+        System.out.println(nc.convertToHexadecimal());
+        System.out.println(nc.convertToAnyBase(6785,30));
     }
 }
 

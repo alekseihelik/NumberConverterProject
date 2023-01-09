@@ -37,12 +37,79 @@ public class NumberConverter {
         return decimal[0];
     }
 
-    public int[] convertToBinary() {
-        return null;
+    public String convertToBinary(){
+        String binary = "";
+        int num = convertToDecimal();
+        while(num/2>0){
+            binary = num%2 + binary;
+            num /= 2;
+        }
+        binary = "1" + binary;
+        return binary;
     }
 
-    public int[] convertToOctal() {
-        return null;
+    public String convertToOctal() {
+        String octal = "";
+        int num = convertToDecimal();
+        while(num/8>0){
+            octal = num%8 + octal;
+            num/=8;
+        }
+        octal = num%8   + octal;
+        return octal;
+    }
+
+    public String convertToHexadecimal() {
+        String hexa = "";
+        int num = convertToDecimal();
+        while(num/16>0){
+            if(num%16>=10){
+                hexa = hexNumToLetter(num%16) + hexa;
+            }
+            else {
+                hexa = num % 16 + hexa;
+            }
+            num/=16;
+        }
+        if(num%16>=10){
+            hexa = hexNumToLetter(num%16) + hexa;
+        }
+        else {
+            hexa = num % 16 + hexa;
+        }
+        return hexa;
+    }
+
+    private String hexNumToLetter(int num){
+        if(num==10){
+            return "A";
+        }
+        else if (num==11){
+            return "B";
+        }
+        else if (num%16==12){
+            return "C";
+        }
+        else if (num==13){
+            return "D";
+        }
+        else if (num%16==14){
+            return "E";
+        }
+        else if (num%16==15){
+            return "F";
+        }
+        return num+"";
+    }
+
+    public String convertToAnyBase(int num, int base){
+        String any = "";
+        while(num/base>0){
+            any = num%base + any;
+            num/=base;
+        }
+        any = num%base + any;
+        return any;
     }
 }
 
