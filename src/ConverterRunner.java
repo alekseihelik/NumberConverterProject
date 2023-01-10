@@ -5,7 +5,7 @@ class ConverterRunner {
     public static void main(String[] args) {
         System.out.println("Welcome to the Number Converter!");
         System.out.println("--------------------------------");
-        System.out.print("Enter the base of your number (2, 8 or 10): ");
+        System.out.print("Enter the base of your number (2, 8, 10, or 16): ");
 
         Scanner s = new Scanner(System.in);
         String choice = s.nextLine();
@@ -15,17 +15,35 @@ class ConverterRunner {
         String number = s.nextLine();
         int n = Integer.parseInt(number);
 
-        s.close();
-
         NumberConverter nc = new NumberConverter(n, base);
         int[] digits = nc.getDigits();
-        System.out.println("\n\nDigit array: " + Arrays.toString(digits));
-        System.out.println("Number: " + nc.displayOriginalNumber());
-        System.out.println(nc.convertToBinary());
-        System.out.println(nc.convertToDecimal());
-        System.out.println(nc.convertToOctal());
-        System.out.println(nc.convertToHexadecimal());
-        System.out.println(nc.convertToAnyBase(960,21));
+        if(choice.equals("2")){
+            System.out.println("Octal Number: " + nc.convertToOctal());
+            System.out.println("Decimal Number: " + nc.convertToDecimal());
+            System.out.println("Hexadecimal Number: " + nc.convertToHexadecimal());
+        }
+        else if(choice.equals("8")){
+            System.out.println("Binary Number: " + nc.convertToBinary());
+            System.out.println("Decimal Number: " + nc.convertToDecimal());
+            System.out.println("Hexadecimal Number: " + nc.convertToHexadecimal());
+        }
+        else if(choice.equals("10")){
+            System.out.println("Binary Number: " + nc.convertToBinary());
+            System.out.println("Octal Number: " + nc.convertToOctal());
+            System.out.println("Hexadecimal Number: " + nc.convertToHexadecimal());
+        }
+        else if(choice.equals("16")){
+            System.out.println("Binary Number: " + nc.convertToBinary());
+            System.out.println("Octal Number: " + nc.convertToOctal());
+            System.out.println("Decimal Number: " + nc.convertToDecimal());
+        }
+        System.out.print("Enter a base 10 number: ");
+        String num = s.nextLine();
+        System.out.print("Enter a base to convert to: ");
+        String newBase = s.nextLine();
+        int numAsInt = Integer.parseInt(num);
+        int newBaseAsInt = Integer.parseInt(newBase);
+        System.out.println("Your new number is: " + nc.convertToAnyBase(numAsInt, newBaseAsInt));
     }
 }
 
