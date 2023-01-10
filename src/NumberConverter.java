@@ -105,11 +105,22 @@ public class NumberConverter {
     public String convertToAnyBase(int num, int base){
         String any = "";
         while(num/base>0){
-            any = num%base + any;
+            any = numbersToLetter(num%base) + any;
             num/=base;
         }
-        any = num%base + any;
+        any = numbersToLetter(num%base) + any;
         return any;
+    }
+
+    private String numbersToLetter(int num){
+        String converted = "";
+        String conversions = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/";
+        for(int i=0; i<conversions.length(); i++){
+            if(num==i){
+                converted = conversions.charAt(i) + "";
+            }
+        }
+        return converted;
     }
 }
 

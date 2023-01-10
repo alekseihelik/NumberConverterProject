@@ -25,7 +25,7 @@ class ConverterRunner {
         System.out.println(nc.convertToDecimal());
         System.out.println(nc.convertToOctal());
         System.out.println(nc.convertToHexadecimal());
-        System.out.println(nc.convertToAnyBase(6785,30));
+        System.out.println(nc.convertToAnyBase(960,21));
     }
 }
 
